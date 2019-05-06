@@ -1,1 +1,6 @@
 
+[woost.extensions.opengraph.admin.sections]
+
+    [OpenGraphSettings.instance(instance, **kwargs)]
+    *: OpenGraph
+
