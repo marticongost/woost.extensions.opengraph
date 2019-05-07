@@ -36,7 +36,7 @@ from woost.extensions.opengraph.properties import get_properties
             tag_closure = get_current_rendering().renderer.single_tag_closure
             meta_template = '<meta property="%s" content="%s"' + tag_closure
 
-            for name, value in self.x_opengraph_properties.iteritems():
+            for name, value in self.x_opengraph_properties.items():
                 if value is not None:
                     meta = meta_template % (
                         escape_attrib(name),
@@ -50,7 +50,7 @@ from woost.extensions.opengraph.properties import get_properties
         # Apply global and object specific properties; note that properties
         # defined by the view take precedence
         properties = get_properties(self.publishable)
-        for key, value in properties.iteritems():
+        for key, value in properties.items():
             if key not in self.x_opengraph_properties:
                 self.x_opengraph_properties[key] = value
         ?>
