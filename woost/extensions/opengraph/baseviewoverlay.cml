@@ -3,7 +3,7 @@
 from cocktail.html import Element
 from cocktail.html.utils import escape_attrib
 from cocktail.html.rendering import get_current_rendering
-from .properties import get_properties
+from woost.extensions.opengraph.properties import get_properties
 ?>
 
 <py:overlay

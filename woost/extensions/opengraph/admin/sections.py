@@ -3,6 +3,7 @@
 .. moduleauthor:: Martí Congost <marti.congost@whads.com>
 """
 from cocktail.translations import translations
+from cocktail.events import when
 from woost.admin.sections import Settings
 from woost.admin.sections.contentsection import ContentSection
 
