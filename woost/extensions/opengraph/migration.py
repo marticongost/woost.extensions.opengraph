@@ -4,7 +4,10 @@
 """
 from cocktail.persistence import migration_step, datastore
 from woost.models import extensions_manager
-from woost.models.migration import rebuild_indexes_after_conversion_to_python3
+from woost.models.migration import (
+    rebuild_indexes_after_conversion_to_python3,
+    create_admin
+)
 
 
 @migration_step(before=rebuild_indexes_after_conversion_to_python3)
@@ -54,7 +57,7 @@ def preserve_woost2_info(e):
             rename_attrib(pub, "type")
 
 
-@migration_step(after=rebuild_indexes_after_conversion_to_python3)
+@migration_step(before=create_admin)
 def fix_opengraph_type_references(e):
 
     from woost.models import Publishable
