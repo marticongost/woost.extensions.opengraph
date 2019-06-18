@@ -53,3 +53,25 @@ def preserve_woost2_info(e):
             rename_attrib(pub, "enabled")
             rename_attrib(pub, "type")
 
+
+@migration_step(after=rebuild_indexes_after_conversion_to_python3)
+def fix_opengraph_type_references(e):
+
+    from woost.models import Publishable
+    from .opengraphtype import OpenGraphType
+
+    for og_type in OpenGraphType.select():
+        try:
+            del og_type._Publishable_open_graph_type
+        except AttributeError:
+            pass
+
+    for pub in Publishable.select():
+        try:
+            og_type = pub._x_opengraph_type
+        except AttributeError:
+            pass
+        else:
+            del pub._x_opengraph_type
+            pub.x_opengraph_type = og_type
+
